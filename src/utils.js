@@ -26,6 +26,11 @@ export function clone(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+/*
+*
+* Identify each of chars in proposition
+*
+* */
 export function lex(input) {
     let pointer = 0;
     let tokens = [];
@@ -136,21 +141,17 @@ export function translate(operator) {
 *
 * */
 export function getInitializator(variables) {
-    console.log('variables', variables);
     return function () {
         let substitutions = {};
         let values = arguments;
-
         variables.forEach(function (primitive, index) {
             substitutions[primitive] = !!values[index];
         });
-        console.log('substitutions', substitutions);
         return substitutions;
     };
 }
 
 export function interpret(tree, substitutions) {
-    console.log('tree', tree);
     tree = clone(tree);
     const actions = {
         substitution: function (args) {
@@ -190,7 +191,6 @@ export function isUnary(op) {
 }
 
 export function parse(tokens) {
-    console.log('parse tokens', tokens);
     tokens = clone(tokens);
     let token;
     return process();
@@ -213,7 +213,7 @@ export function parse(tokens) {
                 }
 
                 if (operation) {
-                    var tmp = args.slice(0);
+                    let tmp = args.slice(0);
                     args = [];
                     args.push(node(operation, tmp));
                 }

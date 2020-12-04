@@ -8,12 +8,7 @@ import store from './store'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
-/* llang 0.0.2 by Petr Nevyhoštěný <petr.nevyhosteny@gmail.com> */
-// require('./alg');
 Vue.use(ElementUI);
-import VueDragDrop from 'vue-drag-drop';
-
-Vue.use(VueDragDrop);
 
 window._ = require('lodash');
 
